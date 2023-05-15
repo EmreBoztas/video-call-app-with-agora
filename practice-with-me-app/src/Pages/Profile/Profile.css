@@ -1,0 +1,92 @@
+.profile_container {
+  position: relative;
+  width: 70%;
+  overflow: hidden;
+  margin: 200px auto;
+  border-radius: 50px;
+}
+.profile_container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.top_conteiner {
+  font-size: 2rem;
+  padding: 35px;
+  padding-bottom: 3.8rem;
+  text-align: center;
+  font-family: "Josefin Sans";
+  letter-spacing: 0.2rem;
+}
+
+.center_title {
+  font-size: 3rem;
+  padding: 15px;
+  font-family: "Josefin Sans";
+  letter-spacing: 0.2rem;
+}
+
+.short_text {
+  font-family: "Open Sans", sans-serif;
+  letter-spacing: 0.13rem;
+}
+
+.mid_conteiner {
+  font-size: 2rem;
+  padding: 35px;
+  padding-bottom: 27rem;
+  font-family: "Josefin Sans";
+  letter-spacing: 0.2rem;
+}
+
+.mid_conteiner_child {
+  width: 33.33%;
+  float: left;
+  padding: 20px;
+  padding-bottom: 150px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.center_object {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.u_font {
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.08rem;
+}
+
+.p_font {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  position: relative;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.css-shadow {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 2px solid #cddc39;
+  filter: drop-shadow(0 0 8px #ff5722);
+}
+
+.little_title {
+  line-height: 2;
+  font-weight: 700;
+}

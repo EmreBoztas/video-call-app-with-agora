@@ -1,0 +1,23 @@
+.container {
+  width: 60%;
+  overflow: hidden;
+  margin: auto;
+}
+
+.u_font {
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: 0.08rem;
+}
+.p_font {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  position: relative;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
