@@ -18,7 +18,7 @@ const Navbar = () => {
         </div>
         <ul className="links">
           <CustomLink to="/">Home</CustomLink>
-          <CustomLink to="/speaking_rooms">Speaking Rooms</CustomLink>
+          <CustomLink to="/speakingrooms">Speaking Rooms</CustomLink>
           <CustomLink to="/about">About</CustomLink>
           <CustomLink to="/profile" className="profile_btn">
             <AccountCircleIcon />
@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className={dropdownOpen ? "dropdown_menu open" : "dropdown_menu"}>
         <ul>
           <CustomLink to="/">Home</CustomLink>
-          <CustomLink to="/speaking_rooms">Speaking Rooms</CustomLink>
+          <CustomLink to="/speakingrooms">Speaking Rooms</CustomLink>
           <CustomLink to="/about">About</CustomLink>
           <CustomLink to="/profile" className="profile_btn">
             <AccountCircleIcon />

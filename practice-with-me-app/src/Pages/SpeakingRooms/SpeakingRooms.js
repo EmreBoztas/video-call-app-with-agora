@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Footer from "../Footer/Footer";
-import "./Speaking_rooms.css";
+import "./SpeakingRooms.css";
 import English from "../Rooms/English";
 import French from "../Rooms/French";
 import German from "../Rooms/German";
 
-const Speaking_rooms = () => {
+const SpeakingRooms = () => {
   const [selectedComponent, setSelectedComponent] = useState("");
 
   const handleComponentChange = (event) => {
@@ -30,7 +30,7 @@ const Speaking_rooms = () => {
       <div className="container">
         <div className="Header">
           <h3 className="container-title">Speaking Rooms</h3>
-          <div class="box">
+          <div className="box">
             <select value={selectedComponent} onChange={handleComponentChange}>
               <option value="English"> English </option>
               <option value="French"> French </option>
@@ -45,7 +45,7 @@ const Speaking_rooms = () => {
   );
 };
 
-export default Speaking_rooms;
+export default SpeakingRooms;
 
 /*
 

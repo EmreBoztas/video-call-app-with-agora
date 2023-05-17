@@ -1,6 +1,7 @@
 import { AgoraVideoPlayer } from "agora-rtc-react";
 import { Grid } from "@material-ui/core";
 import { useState, useEffect } from "react";
+import "./Video.css";
 
 export default function Video(props) {
   const { users, tracks } = props;

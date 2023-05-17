@@ -6,6 +6,7 @@ import MicOffIcon from "@material-ui/icons/MicOff";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { useNavigate } from "react-router";
 
 export default function Controls(props) {
   const client = useClient();
@@ -25,6 +26,7 @@ export default function Controls(props) {
       });
     }
   };
+  const navigate = useNavigate();
 
   const leaveChannel = async () => {
     await client.leave();
@@ -33,6 +35,7 @@ export default function Controls(props) {
     tracks[1].close();
     setStart(false);
     setInCall(false);
+    navigate("/");
   };
 
   return (

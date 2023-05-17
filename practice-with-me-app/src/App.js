@@ -1,28 +1,37 @@
-import { useState } from "react";
 import Rooms from "./Speaking_channels/Rooms";
 import Navbar from "./Navbar/Navbar";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Profile from "./Pages/Profile/Profile";
-import Speaking_rooms from "./Pages/Speaking_rooms/Speaking_rooms"
-import { Route,Routes } from "react-router-dom";
+import SpeakingRooms from "./Pages/SpeakingRooms/SpeakingRooms"
+import LoginForm from "./Pages/Login/LoginForm";
+import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
+import Register from "./Pages/Register/Register";
+import { Route,Routes,useLocation  } from "react-router-dom";
 
 function App() {
- 
+  const location = useLocation();
+  const path = location.pathname; 
+  const pathSegments = path.split('/');
+  const language = pathSegments[2];
+  const roomId = pathSegments[3];
   return (
     <div className="App">
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/speaking_rooms" element={<Speaking_rooms />} />
+        <Route path="/speakingrooms" element={<SpeakingRooms />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/room" element={<Rooms roomId={0} />} />
+        <Route path={`/Room/${language}/${roomId}`} element={<Rooms roomId={roomId} />} />
+        <Route path="/loginform" element={<LoginForm />} />
+        <Route path="/ForgotPassword" element={<ForgotPassword />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
       
     </div>
   );
 }
-// <Rooms roomId={0}/>
+// 
 // <Rooms roomId={1}/>
 export default App;
