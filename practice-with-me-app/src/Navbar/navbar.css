@@ -83,6 +83,7 @@ header {
     align-items: center;
     display: flex;
 }
+
 .profile_btn:hover {
     scale: 1.05;
 }
@@ -126,7 +127,51 @@ header {
     justify-content: center;
 }
 
+.logout ul {
+    list-style: none;
 
+}
+.logout ul li {
+    display: inline-block;
+    position: relative;
+}
+
+
+.logout ul li ul li {
+    display: block;
+}
+
+.logout ul li ul {
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+
+.logout ul li:hover ul {
+    display: block;
+}
+
+.logout_btn {
+    background-color: #fd704d;
+    padding: 0.5rem 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2 ease;
+    width: 120px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+.logout_btn:hover {
+    scale: 1.05;
+  
+}
 
 
 /* RESPONSIVE DESIGN */

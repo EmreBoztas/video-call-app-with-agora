@@ -21,7 +21,7 @@ const Profile = () => {
             </p>
           </div>
           <div className="mid_conteiner_child center_object">
-            <img class="css-shadow" src="https://i.pravatar.cc/75" />
+            <img className="css_shadow" src="https://i.pravatar.cc/75" />
           </div>
           <div className="mid_conteiner_child">
             <h4 className="u_font">Details</h4>

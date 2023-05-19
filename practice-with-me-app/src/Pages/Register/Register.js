@@ -1,60 +1,46 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Footer from '../Footer/Footer';
+import React, {useState} from "react";
+import "./Register.css";
+import Axios from "axios";
 
-function Register() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+function App(){
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [registerStatus, setRegisterStatus] = useState("");
 
-  const handleSubmit = (e) => {
+  const register = (e) => {
     e.preventDefault();
-    // Kayıt işlemini gerçekleştirebilirsiniz
-    // Örneğin, bir API çağrısı yapabilirsiniz.
-    console.log('Kullanıcı Adı:', username);
-    console.log('E-posta:', email);
-    console.log('Şifre:', password);
-  };
+    Axios.post("http://localhost:8001/register", {
+      email: email,
+      username: username,
+      password: password,
+    }).then((response) => {
+      if(response.data.message){
+        setRegisterStatus(response.data.message);
+      }else{
+        setRegisterStatus("ACCOUNT CREATED SUCCESSFULLY");
+      }
+    })
+  }
 
-  return (
-    <div>
-      <h1>Kayıt Ol</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Kullanıcı Adı:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        /><br /><br />
 
-        <label htmlFor="email">E-posta:</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /><br /><br />
-
-        <label htmlFor="password">Şifre:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        /><br /><br />
-
-        <input type="submit" value="Kayıt Ol" /><br /><br />
-        Zaten hesabın var mı? <Link to="/login">Giriş yap!</Link><br /><br />
-      </form>
-      <Footer />
+  return(
+    <div className="container">
+      <div className="loginForm">
+        <form>
+          <h4>Register Here</h4>
+          <label htmlFor="email">Email Address*</label>
+          <input className="textInput" type="text" name="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Enter your Email Address" required />
+          <label htmlFor="username">Username*</label>
+          <input className="textInput" type="username" name="username" onChange={(e) => {setUsername(e.target.value)}} placeholder="Enter your Username" required />
+          <label htmlFor="password">Password*</label>
+          <input className="textInput" type="password" name="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" required />
+          <input className="button" type="submit" onClick={register} value="Create an account" />
+          <h1 style={{fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{registerStatus}</h1>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default Register;
+export default App;

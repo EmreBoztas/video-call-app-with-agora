@@ -4,7 +4,6 @@ import LoginIcon from "@mui/icons-material/Login";
 import { Link } from "react-router-dom";
 
 const Card = ({ language, level, subject, roomId}) => {
-  console.log(language);
   return (
     <div className="card-content">
       <div className="card-conteiner">
