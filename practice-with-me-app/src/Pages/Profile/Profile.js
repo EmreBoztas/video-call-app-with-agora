@@ -1,6 +1,6 @@
 import "./Profile.css";
-import Footer from "../Footer/Footer";
-import Background from "../Images/colors.mp4";
+import Footer from "../../Components/Footer/Footer";
+import Background from "../../Images/colors.mp4";
 const Profile = () => {
   return (
     <div>

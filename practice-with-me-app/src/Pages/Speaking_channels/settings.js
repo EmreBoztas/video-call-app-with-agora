@@ -2,8 +2,8 @@ import { createClient, createMicrophoneAndCameraTracks } from "agora-rtc-react";
 
 const appId = "00f8cf76213a4230a7b4b6796e801a44 ";
 const token = [
-"007eJxTYCgwU2A87etRJuvOoln1O/DA5k+tywXv9++3ubfbKGlJh7cCg4FBmkVymrmZkaFxoomRsUGieZJJkpm5pVmqhYFhoomJxq7klIZARoborU9YGBkgEMRnZ3DNS8/JLM5gYAAAJJcfJQ==", 
-"007eJxTYCgwU2A87etRJuvOoln1O/DA5k+tywXv9++3ubfbKGlJh7cCg4FBmkVymrmZkaFxoomRsUGieZJJkpm5pVmqhYFhoomJxq7klIZARoborU9YGBkgEMRnZ3DNS8/JLM5gYAAAJJcfJQ=="
+"007eJxTYKjT2uBplyGlY6D9sD0rK/LZ/rUJF64diX7E1/tB+/T282IKDAYGaRbJaeZmRobGiSZGxgaJ5kkmSWbmlmapFgaGiSYmjd15KQ2BjAzef+UYGRkgEMRnZ3DNS8/JLM5gYAAAjhsgGQ==", 
+"007eJxTYKjT2uBplyGlY6D9sD0rK/LZ/rUJF64diX7E1/tB+/T282IKDAYGaRbJaeZmRobGiSZGxgaJ5kkmSWbmlmapFgaGiSYmjd15KQ2BjAzef+UYGRkgEMRnZ3DNS8/JLM5gYAAAjhsgGQ=="
 ];
 
 

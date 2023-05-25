@@ -8,7 +8,8 @@ import {
 import { Grid } from "@material-ui/core";
 import Video from "./Video.js";
 import Controls from "./Controls.js";
-import "./Video.css";
+import "./VideoCall.css";
+import Users from "../../Components/User_list/Users.js"
 
 export default function VideoCall(props) {
   const { setInCall } = props;
@@ -17,6 +18,11 @@ export default function VideoCall(props) {
   const client = useClient();
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const { roomId } = props.Id;
+  const [myBool, setMyBool] = useState(true);
+  let i = 0;
+  const toggleBool = () => {
+    setMyBool(!myBool);
+  };
 
   useEffect(() => {
     let init = async (name) => {
@@ -32,7 +38,7 @@ export default function VideoCall(props) {
           user.audioTrack.play();
         }
       });
-
+      i++;
       client.on("user-unpublished", (user, mediaType) => {
         if (mediaType === "audio") {
           if (user.audioTrack) user.audioTrack.stop(); // kapalı değilse kapatmasını sağlıyor
@@ -72,28 +78,31 @@ export default function VideoCall(props) {
 
   return (
     <div className="videocall">
-      <div className="userlist">aaaaaaaaaaaaaaaaaaaaaaaaa</div>
+      <div className="userlist">
+        <Users tracks={tracks} users={users} roomId={roomId} client={client} channelName={channelName[roomId]} />
+      </div>
       <div className="video_track">
-        <Grid container direction="column" style={{ height: "700px" }}>
-          <div className="video">
-          <Grid item style={{ width: "300px", height: "300px" }}>
-            {start && tracks && <Video tracks={tracks} users={users} />}
-          </Grid>
-          </div>
-          <div className="track">
-            <Grid item style={{ height: "50px" }}>
-              {ready && tracks && (
-                <Controls
-                  tracks={tracks}
-                  setStart={setStart}
-                  setInCall={setInCall}
-                />
-              )}
+        <Grid container direction="column" style={{ height: "850px" }}>
+          <div className="user_video">
+            <Grid item style={{ width: "100%" }}>
+              {start && tracks && <Video tracks={tracks} users={users} myBool={myBool}/>}
             </Grid>
           </div>
         </Grid>
       </div>
-      <div className="chat"></div>
+      <div className="track">
+        <Grid item style={{ height: "50px" }}>
+          {ready && tracks && (
+            <Controls
+              tracks={tracks}
+              setStart={setStart}
+              setInCall={setInCall}
+              toggleBool={toggleBool}
+              roomId={roomId}
+            />
+          )}
+        </Grid>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Footer from '../Footer/Footer';
-
+import Footer from "../../Components/Footer/Footer"
 function ForgotPassword() {
   const [email, setEmail] = useState('');
 

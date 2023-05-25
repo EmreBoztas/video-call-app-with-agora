@@ -25,7 +25,7 @@ function App(){
 
 
   return(
-    <div className="container">
+    <div className="register_container">
       <div className="loginForm">
         <form>
           <h4>Register Here</h4>

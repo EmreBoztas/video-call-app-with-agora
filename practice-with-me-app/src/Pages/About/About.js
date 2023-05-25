@@ -1,4 +1,3 @@
-import ref from "../Images/ref1.png";
 
 const About = () => {
   return (

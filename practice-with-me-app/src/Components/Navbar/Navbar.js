@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./navbar.css";
-import logo from "../Images/Logo.png";
-import MenuIcon from "@mui/icons-material/Menu";
+import MenuIcon from '@mui/icons-material/Menu';
+import logo from "../../Images/Logo.png";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link, useMatch, useResolvedPath } from "react-router-dom";

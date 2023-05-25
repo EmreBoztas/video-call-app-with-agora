@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Footer from "../Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
 import "./SpeakingRooms.css";
-import English from "../Rooms/English";
-import French from "../Rooms/French";
-import German from "../Rooms/German";
+import English from "../../Components/Rooms/English";
+import French from "../../Components/Rooms/French";
+import German from "../../Components/Rooms/German";
 
 const SpeakingRooms = () => {
   const [selectedComponent, setSelectedComponent] = useState("");

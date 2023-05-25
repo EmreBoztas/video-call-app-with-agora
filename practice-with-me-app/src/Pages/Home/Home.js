@@ -1,8 +1,8 @@
 import "./home.css";
-import Card from "../Card/Card";
-import Footer from "../Footer/Footer";
-import Background from "../Images/background.mp4";
-import ref from "../Images/ref1.png";
+import Card from "../../Components/Card/Card";
+import Footer from "../../Components/Footer/Footer";
+import Background from "../../Images/background.mp4";
+import ref from "../../Images/ref1.png";
 
 const Home = () => {
   return (
