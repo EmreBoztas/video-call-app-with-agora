@@ -1,2 +1,1 @@
-# video-call-app-with-agora
- video call app created with react, node.js, mysql, agora
+The video call application is built using React, Node.js, MySQL, and Agora.
