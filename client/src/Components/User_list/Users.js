@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Users.css";
+import { Link } from "react-router-dom";
+import UserPhoto from "./UserPhoto";
 
 const Users = (props) => {
   const { users, tracks } = props;
@@ -45,12 +47,17 @@ const Users = (props) => {
   }, [tracks, users]);
 
   return (
-    <div>
+    <div className="user_list_container">
       {userList && userList.length > 0 ? (
         <div>
           {userList.map((user, index) => (
             <div className="user_block" key={index}>
-              <p>{user.username}</p>
+              <Link to={`/profile/${user.username}`}>
+                <div className="user_list_photo">
+                  <UserPhoto username={user.username} />
+                </div>
+                <p>{user.username}</p>
+              </Link>
             </div>
           ))}
         </div>

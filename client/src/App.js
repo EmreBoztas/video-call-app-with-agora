@@ -28,6 +28,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/speakingrooms" element={<SpeakingRooms />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path={`/profile/${language}`} element={<Profile />} />
         <Route
           path={`/Room/${language}/${roomId}`}
           element={<Rooms roomId={roomId} />}

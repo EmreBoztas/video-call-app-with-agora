@@ -159,8 +159,11 @@ app.put("/update-profile", verifyUser, (req, res) => {
   );
 });
 
-app.get("/profile-data", verifyUser, (req, res) => {
-  const username = req.username;
+app.post("/profile-data", verifyUser, (req, res) => {
+  let username = req.body.username;
+  if (username == "profil") {
+    username = req.username;
+  }
 
   con.query(
     "SELECT name, surname, username, email, image, about from users  WHERE username = ?",
@@ -282,6 +285,30 @@ app.post("/speaking_room_user", verifyUser, (req, res) => {
     }
   });
 });
+app.post("/speaking_room_user_photo", verifyUser, (req, res) => {
+  let username = req.body.username;
+
+  con.query(
+    "SELECT image from users  WHERE username = ?",
+    [username],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Veritabanı hatası");
+      } else {
+        if (results.length === 0) {
+          res.status(404).send("Profil bulunamadı");
+        } else {
+          const profileData = {
+            image: results[0].image,
+          };
+
+          res.send(profileData);
+        }
+      }
+    }
+  );
+});
 
 app.post("/speaking_room_leave", verifyUser, (req, res) => {
   const isExist =
@@ -315,6 +342,7 @@ const upload = multer({ storage: storage });
 app.post("/upload-profile-image", upload.single("profile"), (req, res) => {
   // Use path.relative() to get the path relative to the project root
   const filepath = "images/profile/" + path.basename(req.file.path);
+  console.log(path.basename(req.file.path))
   const username = req.body.username; // Kullanıcı adını burada alın.
 
   con.query(
