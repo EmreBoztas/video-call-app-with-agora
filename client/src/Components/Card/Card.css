@@ -29,6 +29,15 @@
   font-style: italic;
 }
 
+.user_count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+  float: right;
+}
+
+
 p {
   font-size: 16px;
 }

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import VideoCall from "./VideoCall.js";
 import axios from "axios";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./Rooms.css";
 
 export default function Rooms(props) {
