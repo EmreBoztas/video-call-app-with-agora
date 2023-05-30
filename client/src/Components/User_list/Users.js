@@ -52,12 +52,16 @@ const Users = (props) => {
         <div>
           {userList.map((user, index) => (
             <div className="user_block" key={index}>
-              <Link to={`/profile/${user.username}`}>
+              <a
+                href={`/profile/${user.username}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className="user_list_photo">
                   <UserPhoto username={user.username} />
                 </div>
                 <p>{user.username}</p>
-              </Link>
+              </a>
             </div>
           ))}
         </div>

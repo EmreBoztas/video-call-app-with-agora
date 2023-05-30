@@ -13,9 +13,12 @@ const EditProfile = () => {
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const response = await axios.get("http://localhost:8001/profile-data", {
-          withCredentials: true,
-        });
+        const response = await axios.post(
+          "http://localhost:8001/profile-data",
+          {
+            username: "profil",
+          }
+        );
         const data = response.data;
         setProfileData(data);
         setIsLoading(false);
@@ -24,7 +27,6 @@ const EditProfile = () => {
         setIsLoading(false);
       }
     };
-
     fetchProfileData();
   }, []);
 
@@ -97,6 +99,7 @@ const EditProfile = () => {
       console.error("Error:", error);
       setIsLoading(false);
     }
+    console.log("aaaaaaaaaaaa ");
   };
 
   return (

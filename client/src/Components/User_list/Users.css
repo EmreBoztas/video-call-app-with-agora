@@ -33,7 +33,7 @@
 }
 
 .user_list_photo img {
-  width: 100%;
+  width: 60%;
   height: auto;
   border-radius: 50%;
   filter: drop-shadow(0 0 8px #ffffff);
