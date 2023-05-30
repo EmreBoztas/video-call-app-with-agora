@@ -30,7 +30,7 @@ const Navbar = () => {
       .get("http://localhost:8001/logout")
       .then((res) => {
         if (res.data.Status === "Success") {
-          window.location.reload(true); //Server tarafını ve sayfayı yeniler
+          window.location.href = "/"; // Anasayfaya yönlendirir
         } else {
           alert("error");
         }
@@ -131,4 +131,4 @@ function CustomLink({ to, children, ...props }) {
   );
 }
 
-export default Navbar;
+export default Navbar;

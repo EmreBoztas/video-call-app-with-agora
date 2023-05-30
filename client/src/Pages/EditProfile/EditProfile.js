@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./EditProfile.css";
 import Background from "../../Images/colors.mp4";
-
+import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 
 const EditProfile = () => {
   const [profileData, setProfileData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedFile, setSelectedFile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -52,6 +53,8 @@ const EditProfile = () => {
       // Güncellenen verileri state'e kaydedin
       setProfileData(response.data);
       setIsLoading(false);
+
+      navigate("/profile", { replace: true });
     } catch (error) {
       console.error("Error:", error);
       setIsLoading(false);
@@ -99,7 +102,6 @@ const EditProfile = () => {
       console.error("Error:", error);
       setIsLoading(false);
     }
-    console.log("aaaaaaaaaaaa ");
   };
 
   return (
@@ -113,7 +115,15 @@ const EditProfile = () => {
         <div className="epmid_conteiner">
           <div className="epmid_conteiner_child">
             <span className="eplittle_title"> About me</span>
-            <p className="epp_font">{profileData?.about}</p>
+            <p className="epp_font">
+              <textarea
+                className="epinput-field"
+                id="about"
+                name="about"
+                value={profileData?.about}
+                onChange={handleInputChange}
+              />
+            </p>
           </div>
           <div className="epmid_conteiner_child center_object">
             <img
@@ -211,4 +221,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default EditProfile;

@@ -15,8 +15,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.static("public"));
 
-app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
 
 app.use(cookieParser());
 app.use(
@@ -43,7 +43,6 @@ const con = mysql.createConnection({
 });
 
 const verifyUser = (req, res, next) => {
-  //next is a middleware
   const token = req.cookies.token;
   if (!token) {
     return res.json({ Message: "we need token please provide it." });
@@ -53,7 +52,7 @@ const verifyUser = (req, res, next) => {
         return res.json({ Message: "Authentication error" });
       } else {
         req.username = decoded.username;
-        next(); // app.get e geri dönmesini sağlıyor
+        next();
       }
     });
   }
@@ -80,7 +79,6 @@ app.post("/register", (req, res) => {
 app.post("/forgot-password", (req, res) => {
   const email = req.body.email;
 
-  // E-posta adresi kontrolü
   con.query(
     "SELECT * FROM users WHERE email = ?",
     [email],
@@ -88,20 +86,16 @@ app.post("/forgot-password", (req, res) => {
       if (error) throw error;
 
       if (results.length === 0) {
-        // Kullanıcı bulunamadı
         return res.send("Kullanıcı bulunamadı.");
       } else {
-        // Rastgele bir şifre oluşturma
         const newPassword = crypto.randomBytes(20).toString("hex");
 
-        // Veritabanında yeni şifrenin kaydedilmesi
         con.query(
           "UPDATE users SET password = ? WHERE email = ?",
           [newPassword, email],
           (error, results) => {
             if (error) throw error;
 
-            // E-posta gönderme
             const transporter = nodemailer.createTransport({
               service: "gmail",
               auth: {
@@ -120,8 +114,7 @@ app.post("/forgot-password", (req, res) => {
             transporter.sendMail(mailOptions, (error, info) => {
               if (error) throw error;
 
-              // E-posta gönderildi
-              res.send("E-posta gönderildi"); // E-posta gönderildiğinde bir yanıt gönderiyoruz
+              res.send("E-posta gönderildi"); 
             });
           }
         );
@@ -195,7 +188,6 @@ app.post("/profile-data", verifyUser, (req, res) => {
 app.post("/loginform", (req, res) => {
   const { email, password } = req.body;
 
-  // Kullanıcı adını oturum bilgisine ekleyin
   req.session.username = email;
 
   const sql = "SELECT * FROM users WHERE email = ?";
@@ -327,23 +319,22 @@ app.post("/speaking_room_leave", verifyUser, (req, res) => {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, "../client/public/images/profile")); // Dosyaların kaydedileceği klasör
+    cb(null, path.join(__dirname, "../client/public/images/profile"));
   },
   filename: function (req, file, cb) {
-    console.log(req.body); // Bu satırı ekledik
-    const ext = path.extname(file.originalname); // Dosya uzantısını alın
-    const username = req.body.username; // Kullanıcı adını alın
-    cb(null, `${username}${ext}`); // Dosya adını geri döndürün
+    console.log(req.body);
+    const ext = path.extname(file.originalname);
+    const username = req.body.username;
+    cb(null, `${username}${ext}`);
   },
 });
 
 const upload = multer({ storage: storage });
 
 app.post("/upload-profile-image", upload.single("profile"), (req, res) => {
-  // Use path.relative() to get the path relative to the project root
   const filepath = "images/profile/" + path.basename(req.file.path);
   console.log(path.basename(req.file.path))
-  const username = req.body.username; // Kullanıcı adını burada alın.
+  const username = req.body.username; 
 
   con.query(
     "UPDATE users SET image = ? WHERE username = ?",

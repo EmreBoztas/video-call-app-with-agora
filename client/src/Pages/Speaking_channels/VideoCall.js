@@ -77,6 +77,8 @@ export default function VideoCall(props) {
     }
   }, [channelName[roomId], client, ready, tracks]); //Herhangibiri değişti zaman bu fonksiyonu çalıştır.
 
+  console.log("channelName[roomId]: " + channelName[roomId] + " token[roomId]: " + config.token[roomId])
+
   return (
     <div className="videocall">
       <video src={Background} autoPlay muted loop />
