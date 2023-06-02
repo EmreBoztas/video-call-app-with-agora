@@ -12,6 +12,9 @@
   background-color: #f2f2f2;
   text-align: center;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .user_block a {
@@ -43,4 +46,18 @@
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
+}
+
+.report_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.report_button:focus {
+  outline: none;
+}
+
+.report_button:hover {
+  text-decoration: underline;
 }

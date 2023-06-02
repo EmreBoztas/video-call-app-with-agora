@@ -8,7 +8,7 @@ import LoginForm from "./Pages/Login/LoginForm";
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import EditProfile from "./Pages/EditProfile/EditProfile";
 import Register from "./Pages/Register/Register";
-
+import Banned from "./Pages/Banned/Banned";
 import { Route, Routes, useLocation } from "react-router-dom";
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
           element={<Rooms roomId={roomId} />}
         />
         <Route path="/loginform" element={<LoginForm />} />
+        <Route path="/banned" element={<Banned />} />
         <Route path="/EditProfile" element={<EditProfile />} />
         <Route path="/ForgotPassword" element={<ForgotPassword />} />
         <Route path="/register" element={<Register />} />

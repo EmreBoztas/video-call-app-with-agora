@@ -13,17 +13,17 @@ import Users from "../../Components/User_list/Users.js";
 import Background from "../../Images/colors.mp4";
 
 export default function VideoCall(props) {
-  const { setInCall } = props;
+  const { setInCall, reportedUsers, handleUserReport, ban, setIsBan } = props;
   const [users, setUsers] = useState([]);
   const [start, setStart] = useState(false);
   const client = useClient();
   const { ready, tracks } = useMicrophoneAndCameraTracks();
   const { roomId } = props.Id;
   const [myBool, setMyBool] = useState(true);
-  let i = 0;
   const toggleBool = () => {
     setMyBool(!myBool);
   };
+
 
   useEffect(() => {
     let init = async (name) => {
@@ -39,7 +39,6 @@ export default function VideoCall(props) {
           user.audioTrack.play();
         }
       });
-      i++;
       client.on("user-unpublished", (user, mediaType) => {
         if (mediaType === "audio") {
           if (user.audioTrack) user.audioTrack.stop(); // kapalı değilse kapatmasını sağlıyor
@@ -77,7 +76,6 @@ export default function VideoCall(props) {
     }
   }, [channelName[roomId], client, ready, tracks]); //Herhangibiri değişti zaman bu fonksiyonu çalıştır.
 
-  console.log("channelName[roomId]: " + channelName[roomId] + " token[roomId]: " + config.token[roomId])
 
   return (
     <div className="videocall">
@@ -90,6 +88,9 @@ export default function VideoCall(props) {
           roomId={roomId}
           client={client}
           channelName={channelName[roomId]}
+          onUserReport={handleUserReport}
+          ban={ban}
+          setIsBan={setIsBan}
         />
       </div>
       <div className="video_track">
@@ -112,6 +113,7 @@ export default function VideoCall(props) {
               setInCall={setInCall}
               toggleBool={toggleBool}
               roomId={roomId}
+              reportedUsers={reportedUsers}
             />
           )}
         </Grid>
